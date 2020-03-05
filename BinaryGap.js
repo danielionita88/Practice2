@@ -18,11 +18,13 @@
 function solution(N) {
     let array = N.toString(2).split('1')
     let zeroArray = array.filter(string => string.includes('0'))
-    if (zeroArray.length === 0 || array.length === 2 && array[1].includes('0') ){
+    if (zeroArray.length === 0 || array.length === 2 && array[array.length-1].includes('0') ){
         return 0
     }
+    else if( zeroArray.lengh === 1 && array.length > 2){return 1}
+       
     else{
-        let sorted = zeroArray.sort((a,b)=> a.length > b.length ? a:b)
+        let sorted = zeroArray.sort((a,b)=> b.length- a.length)
         return sorted[0].length
     }
 }
